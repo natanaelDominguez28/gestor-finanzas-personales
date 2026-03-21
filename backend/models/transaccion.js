@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const TransaccionSchema = new Schema({
+    usuario: { type: Schema.Types.ObjectId, ref: 'Usuario', required: true },
     monto: { type: Number, required: true, min: [0, 'El monto debe ser positivo'] },
     descripcion: { type: String, required: true },
     tipo: { type: String, enum: ['ingreso', 'gasto'], required: true },

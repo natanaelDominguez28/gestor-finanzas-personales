@@ -16,7 +16,7 @@ export const ListadoComponent = ({urlBase}) => {
     //     }
     //   }
 
-    const {transacciones, loading, cargarDatos} = useContext(TransaccionContext)
+    const {transacciones, loading, cargarDatos, getAuthHeaders} = useContext(TransaccionContext)
 
       const formatDate = (date) => {
         const dateFormat = new Date(date)
@@ -37,7 +37,8 @@ export const ListadoComponent = ({urlBase}) => {
         if (window.confirm('Estas seguro de eliminar la transaccion?')) {
             try{
                 const response = await fetch(`${urlBase}/${id}`,{
-                    method: 'DELETE'
+                    method: 'DELETE',
+                    headers: getAuthHeaders()
                 })
 
                 if (response.ok) {

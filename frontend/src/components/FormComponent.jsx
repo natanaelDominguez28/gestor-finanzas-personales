@@ -4,7 +4,7 @@ import { TransaccionContext } from '../context/TransaccionContext'
 
 export const FormComponent = ({urlBase}) => {
 
-  const {cargarDatos} = useContext(TransaccionContext)
+  const {cargarDatos, getAuthHeaders} = useContext(TransaccionContext)
     
   const navigate = useNavigate()
 
@@ -31,9 +31,7 @@ export const FormComponent = ({urlBase}) => {
       }
       const response = await fetch(urlBase,{
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: getAuthHeaders(),
         body: JSON.stringify({
           ...form,
           monto:parseFloat(monto)

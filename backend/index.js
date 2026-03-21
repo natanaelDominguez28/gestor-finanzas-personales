@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const {mongoose} = require('./database/database');
+require('dotenv').config();
 
 const app = express();
 
@@ -9,6 +10,7 @@ app.use(express.json());
 app.use(cors({origin: 'http://localhost:5173'}));
 
 //rutas
+app.use('/auth', require('./routes/auth.route')); 
 app.use('/transacciones', require('./routes/transaccion.route'));
 
 

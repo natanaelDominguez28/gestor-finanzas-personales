@@ -1,27 +1,31 @@
 import './App.css'
 import { ListadoComponent } from './components/ListadoComponent'
-import { NavbarComponent } from './components/NavbarComponent' 
+import { NavbarComponent } from './components/NavbarComponent'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { FormComponent } from './components/FormComponent'
 import Home from './pages/home/Home'
+import LoginPage from './pages/login/Login'
+import RegisterPage from './pages/register/Register'
 import { TransaccionProvider } from './context/TransaccionProvider'
+import { RutaPrivada } from './components/RutaPrivada'
+
+const urlBase = 'http://localhost:3000/transacciones'
 
 function App() {
-  const urlBase = 'http://localhost:3000/transacciones'
   return (
-    <>
     <TransaccionProvider>
       <NavbarComponent />
       <div className="container">
         <Routes>
-          <Route path='/home' element={<Home urlBase={urlBase} />} />
-          <Route path='/registro' element={<FormComponent urlBase={urlBase} />} />
-          <Route path='/listado' element={<ListadoComponent urlBase={urlBase} />} />
-          <Route path='/*' element={<Navigate to="/home" />} />
+          <Route path='/login' element={<LoginPage />} />
+          <Route path='/register' element={<RegisterPage />} />
+          <Route path='/home' element={<RutaPrivada><Home urlBase={urlBase} /></RutaPrivada>} />
+          <Route path='/registro' element={<RutaPrivada><FormComponent urlBase={urlBase} /></RutaPrivada>} />
+          <Route path='/listado' element={<RutaPrivada><ListadoComponent urlBase={urlBase} /></RutaPrivada>} />
+          <Route path='/*' element={<Navigate to="/login" />} />
         </Routes>
       </div>
-      </TransaccionProvider>
-    </>
+    </TransaccionProvider>
   )
 }
 

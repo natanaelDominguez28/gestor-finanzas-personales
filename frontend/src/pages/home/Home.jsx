@@ -2,7 +2,7 @@ import React, { useContext, useMemo } from 'react'
 import { TransaccionContext } from '../../context/TransaccionContext'
 import { 
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
-  PieChart, Pie 
+  PieChart, Pie, Cell
 } from 'recharts';
 
 const Home = () => {
