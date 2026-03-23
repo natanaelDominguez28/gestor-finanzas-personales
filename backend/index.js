@@ -9,7 +9,9 @@ const app = express();
 
 //middlewares
 app.use(express.json());
-app.use(cors({origin: 'http://localhost:5173'}));
+app.use(cors({origin: ['http://localhost:5173',
+    'https://gestor-finanzas-personales.gilt.vercer.app'
+]}));
 
 //rutas
 app.use('/auth', require('./routes/auth.route')); 
