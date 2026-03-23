@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { TransaccionContext } from "./TransaccionContext"
 
 
-const URL_BASE = 'http://localhost:3000'
+const URL_BASE = 'https://gestor-finanzas-personales.onrender.com'
 
 export const TransaccionProvider = ({ children }) => {
 

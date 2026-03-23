@@ -9,7 +9,7 @@ import RegisterPage from './pages/register/Register'
 import { TransaccionProvider } from './context/TransaccionProvider'
 import { RutaPrivada } from './components/RutaPrivada'
 
-const urlBase = 'http://localhost:3000/transacciones'
+const urlBase = 'https://gestor-finanzas-personales.onrender.com/transacciones'
 
 function App() {
   return (

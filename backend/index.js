@@ -1,7 +1,9 @@
+require('dotenv').config();
+
 const express = require('express');
 const cors = require('cors');
 const {mongoose} = require('./database/database');
-require('dotenv').config();
+
 
 const app = express();
 
