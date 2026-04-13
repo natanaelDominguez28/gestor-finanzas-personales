@@ -8,24 +8,29 @@ import LoginPage from './pages/login/Login'
 import RegisterPage from './pages/register/Register'
 import { TransaccionProvider } from './context/TransaccionProvider'
 import { RutaPrivada } from './components/RutaPrivada'
+import { Toaster } from 'sonner'
 
 const urlBase = 'https://gestor-finanzas-personales.onrender.com/transacciones'
 
 function App() {
   return (
-    <TransaccionProvider>
-      <NavbarComponent />
-      <div className="container">
-        <Routes>
-          <Route path='/login' element={<LoginPage />} />
-          <Route path='/register' element={<RegisterPage />} />
-          <Route path='/home' element={<RutaPrivada><Home urlBase={urlBase} /></RutaPrivada>} />
-          <Route path='/registro' element={<RutaPrivada><FormComponent urlBase={urlBase} /></RutaPrivada>} />
-          <Route path='/listado' element={<RutaPrivada><ListadoComponent urlBase={urlBase} /></RutaPrivada>} />
-          <Route path='/*' element={<Navigate to="/login" />} />
-        </Routes>
-      </div>
-    </TransaccionProvider>
+    <>
+      <Toaster position='top-right' richColors />
+    
+      <TransaccionProvider>
+        <NavbarComponent />
+        <div className="container">
+          <Routes>
+            <Route path='/login' element={<LoginPage />} />
+            <Route path='/register' element={<RegisterPage />} />
+            <Route path='/home' element={<RutaPrivada><Home urlBase={urlBase} /></RutaPrivada>} />
+            <Route path='/registro' element={<RutaPrivada><FormComponent urlBase={urlBase} /></RutaPrivada>} />
+            <Route path='/listado' element={<RutaPrivada><ListadoComponent urlBase={urlBase} /></RutaPrivada>} />
+            <Route path='/*' element={<Navigate to="/login" />} />
+          </Routes>
+        </div>
+      </TransaccionProvider>
+    </>
   )
 }
 
