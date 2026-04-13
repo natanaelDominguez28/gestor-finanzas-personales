@@ -1,6 +1,7 @@
 import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TransaccionContext } from '../context/TransaccionContext'
+import { toast } from 'sonner'
 
 export const FormComponent = ({urlBase}) => {
 
@@ -22,11 +23,11 @@ export const FormComponent = ({urlBase}) => {
     event.preventDefault()
     try{
       if (fecha > maxDate) {
-        alert("La fecha no puede ser mayor a la actual.")
+        toast.error("La fecha no puede ser mayor a la actual.")
         return
       }
       if (monto <= 0) {
-        alert("El monto debe ser un valor positivo.")
+        toast.error("El monto debe ser un valor positivo.")
         return
       }
       const response = await fetch(urlBase,{
@@ -39,13 +40,13 @@ export const FormComponent = ({urlBase}) => {
       })
 
       if (response.ok) {
-        console.log("Transacción exitosa!")
+        toast.success("Transacción exitosa!")
         navigate('/listado')
       }else{
-        console.log("No se pudo realizar la transacción");
+        toast.error("No se pudo realizar la transacción")
       }
     }catch(error){
-      console.error("Error al enviar el formulario", error)
+      toast.error("Error al enviar el formulario")
     }
     
     await cargarDatos()
