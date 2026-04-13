@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import { TransaccionContext } from "../context/TransaccionContext"
+import { toast } from "sonner"
 
 export const NavbarComponent = () => {
   const { usuario, logout, token } = useContext(TransaccionContext)
@@ -8,6 +9,7 @@ export const NavbarComponent = () => {
 
   const handleLogout = () => {
     logout()
+    toast.success('Hasta luego!')
     navigate('/login')
   }
 
